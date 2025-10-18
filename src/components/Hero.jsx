@@ -14,7 +14,7 @@ const Hero = () => {
         <div className="absolute w-96 h-96 -bottom-48 -right-48 bg-primary-cyan/20 rounded-full blur-3xl"></div>
         
         {/* Animated squares like the logo */}
-        <motion.div
+        {/* <motion.div
           className="absolute top-20 right-20 w-8 h-8 bg-gradient-primary opacity-50"
           animate={{
             y: [0, 20, 0],
@@ -25,8 +25,8 @@ const Hero = () => {
             repeat: Infinity,
             ease: "easeInOut"
           }}
-        />
-        <motion.div
+        /> */}
+        {/* <motion.div
           className="absolute top-40 right-40 w-6 h-6 bg-gradient-primary opacity-40"
           animate={{
             y: [0, -15, 0],
@@ -51,7 +51,7 @@ const Hero = () => {
             ease: "easeInOut",
             delay: 1
           }}
-        />
+        /> */}
       </div>
 
       {/* Content */}
