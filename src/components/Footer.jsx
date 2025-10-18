@@ -52,7 +52,7 @@ const Footer = () => {
           {/* Brand Column */}
           <div className="lg:col-span-1">
             <motion.img
-              src="/Untitled-2 copy.png"
+              src="/logo.png"
               alt="Nova Reach"
               className="h-16 w-auto mb-4"
               whileHover={{ scale: 1.05 }}

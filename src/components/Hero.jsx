@@ -62,7 +62,7 @@ const Hero = () => {
           transition={{ duration: 0.8 }}
         >
           <motion.img
-            src="/Untitled-2 copy.png"
+            src="/logo.png"
             alt="Nova Reach"
             className="h-32 sm:h-40 md:h-48 w-auto mx-auto mb-8"
             initial={{ scale: 0.8, opacity: 0 }}

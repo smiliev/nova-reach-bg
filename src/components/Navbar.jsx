@@ -9,7 +9,7 @@ const Navbar = ({ scrolled }) => {
     { name: 'Начало', href: '#hero' },
     { name: 'За нас', href: '#about' },
     { name: 'Услуги', href: '#services' },
-    { name: 'Портфолио', href: '#portfolio' },
+    // { name: 'Портфолио', href: '#portfolio' },
     { name: 'Контакти', href: '#contact' },
   ]
 
@@ -40,7 +40,7 @@ const Navbar = ({ scrolled }) => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <img src="/Untitled-2 copy.png" alt="Nova Reach" className="h-12 w-auto" />
+            <img src="/logo.png" alt="Nova Reach" className="h-12 w-auto" />
           </motion.a>
 
           {/* Desktop Menu */}

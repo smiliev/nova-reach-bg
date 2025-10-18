@@ -1,0 +1,12 @@
+# Cloudflare Pages configuration
+name = "nova-reach-bg"
+pages_build_output_dir = "./dist"
+
+[site]
+bucket = "./dist"
+
+# Optional: Custom domain
+# routes = [
+#   { pattern = "novareach.bg", custom_domain = true }
+# ]
+
