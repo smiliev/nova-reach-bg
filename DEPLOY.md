@@ -29,22 +29,17 @@ Node version:            18
 ### 3. Done! 🎉
 Your site will be live at: `https://nova-reach-bg.pages.dev`
 
-## Deploy via Wrangler CLI
+## Manual Deploy (if not using Git)
 
-### First Time Setup
+If you prefer to deploy manually without connecting to Git:
+
+1. Build the project:
 ```bash
-# Install Wrangler globally
-npm install -g wrangler
-
-# Login to Cloudflare
-wrangler login
+npm run build
 ```
 
-### Deploy
-```bash
-# Build and deploy in one command
-npm run deploy
-```
+2. Go to your Cloudflare Pages project → **Deployments**
+3. Drag and drop the `dist` folder to deploy directly
 
 ## Custom Domain Setup
 
@@ -63,9 +58,8 @@ Cloudflare will automatically provide:
 
 ## Files Added for Deployment
 
-1. **`public/_redirects`** - SPA routing support
-2. **`wrangler.toml`** - Cloudflare configuration
-3. **`public/Untitled-2 copy.png`** - Logo in public folder
+1. **`public/_redirects`** - SPA routing support (redirects all routes to index.html)
+2. **`public/logo.png`** - Logo in public folder
 
 ## Environment Variables (if needed)
 
