@@ -47,7 +47,7 @@ const Navbar = ({ scrolled }) => {
           </motion.a>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex items-center space-x-4">
+          <div className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => (
               <motion.a
                 key={item.name}
@@ -60,7 +60,6 @@ const Navbar = ({ scrolled }) => {
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-primary group-hover:w-full transition-all duration-300"></span>
               </motion.a>
             ))}
-            <LanguageSwitcher />
             <motion.a
               href="#contact"
               onClick={(e) => scrollToSection(e, '#contact')}
@@ -70,6 +69,11 @@ const Navbar = ({ scrolled }) => {
             >
               {t('nav.contactUs')}
             </motion.a>
+          </div>
+
+          {/* Language Switcher - Separate on the right */}
+          <div className="hidden md:block">
+            <LanguageSwitcher />
           </div>
 
           {/* Mobile Menu Button & Language Switcher */}
