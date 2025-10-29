@@ -11,60 +11,62 @@ import {
   FaVideo,
   FaMobile
 } from 'react-icons/fa'
+import { useTranslation } from 'react-i18next'
 
 const Services = () => {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: "-100px" })
   const [hoveredIndex, setHoveredIndex] = useState(null)
+  const { t } = useTranslation()
 
   const services = [
     {
       icon: <FaPalette className="text-5xl" />,
-      title: 'Branding',
-      description: 'Създаваме силна визуална идентичност и стратегия за вашия бранд',
-      features: ['Лого дизайн', 'Brand Identity', 'Brand Strategy', 'Визуални материали']
+      title: t('services.branding.title'),
+      description: t('services.branding.desc'),
+      features: [t('services.branding.feature1'), t('services.branding.feature2'), t('services.branding.feature3'), t('services.branding.feature4')]
     },
     {
       icon: <FaCode className="text-5xl" />,
-      title: 'Web Development',
-      description: 'Разработваме модерни, бързи и отзивчиви уебсайтове',
-      features: ['Уеб дизайн', 'WordPress сайтове', 'E-commerce', 'Поддръжка']
+      title: t('services.web.title'),
+      description: t('services.web.desc'),
+      features: [t('services.web.feature1'), t('services.web.feature2'), t('services.web.feature3'), t('services.web.feature4')]
     },
     {
       icon: <FaSearch className="text-5xl" />,
-      title: 'SEO оптимизация',
-      description: 'Подобряваме видимостта на вашия сайт в търсачките',
-      features: ['On-Page SEO', 'Off-Page SEO', 'SEO одит', 'Копирайтинг']
+      title: t('services.seo.title'),
+      description: t('services.seo.desc'),
+      features: [t('services.seo.feature1'), t('services.seo.feature2'), t('services.seo.feature3'), t('services.seo.feature4')]
     },
     {
       icon: <FaFacebook className="text-5xl" />,
-      title: 'Social Media Marketing',
-      description: 'Управление и реклама в социалните мрежи',
-      features: ['Facebook реклама', 'Instagram реклама', 'Content creation', 'Community management']
+      title: t('services.social.title'),
+      description: t('services.social.desc'),
+      features: [t('services.social.feature1'), t('services.social.feature2'), t('services.social.feature3'), t('services.social.feature4')]
     },
     {
       icon: <FaGoogle className="text-5xl" />,
-      title: 'Performance Marketing',
-      description: 'Ефективни рекламни кампании с измерими резултати',
-      features: ['Google Ads', 'YouTube реклама', 'Ремаркетинг', 'Аналитика']
+      title: t('services.performance.title'),
+      description: t('services.performance.desc'),
+      features: [t('services.performance.feature1'), t('services.performance.feature2'), t('services.performance.feature3'), t('services.performance.feature4')]
     },
     {
       icon: <FaEnvelope className="text-5xl" />,
-      title: 'Email Marketing',
-      description: 'Персонализирани имейл кампании за вашата аудитория',
-      features: ['Имейл кампании', 'Автоматизация', 'Сегментация', 'A/B тестване']
+      title: t('services.email.title'),
+      description: t('services.email.desc'),
+      features: [t('services.email.feature1'), t('services.email.feature2'), t('services.email.feature3'), t('services.email.feature4')]
     },
     {
       icon: <FaVideo className="text-5xl" />,
-      title: 'Creative Production',
-      description: 'Производство на висококачествено визуално съдържание',
-      features: ['Видео продукция', 'Фотография', 'Графичен дизайн', 'Анимации']
+      title: t('services.creative.title'),
+      description: t('services.creative.desc'),
+      features: [t('services.creative.feature1'), t('services.creative.feature2'), t('services.creative.feature3'), t('services.creative.feature4')]
     },
     {
       icon: <FaMobile className="text-5xl" />,
-      title: 'Digital Innovations',
-      description: 'Иновативни решения за вашия бизнес',
-      features: ['Мобилни приложения', 'AR/VR опит', 'Чатботове', 'AI решения']
+      title: t('services.digital.title'),
+      description: t('services.digital.desc'),
+      features: [t('services.digital.feature1'), t('services.digital.feature2'), t('services.digital.feature3'), t('services.digital.feature4')]
     }
   ]
 
@@ -84,10 +86,10 @@ const Services = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6">
-            Нашите <span className="text-gradient">услуги</span>
+            {t('services.title')} <span className="text-gradient">{t('services.titleHighlight')}</span>
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Предлагаме цялостни дигитални решения за вашия бизнес - от стратегия до изпълнение
+            {t('services.description')}
           </p>
         </motion.div>
 
@@ -152,7 +154,7 @@ const Services = () => {
             whileHover={{ scale: 1.05, boxShadow: "0 20px 40px rgba(217, 34, 130, 0.3)" }}
             whileTap={{ scale: 0.95 }}
           >
-            Свържи се за безплатна консултация
+            {t('services.cta')}
           </motion.a>
         </motion.div>
       </div>

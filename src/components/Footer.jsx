@@ -1,33 +1,35 @@
 import { motion } from 'framer-motion'
 import { FaFacebook, FaInstagram, FaLinkedin, FaHeart } from 'react-icons/fa'
+import { useTranslation } from 'react-i18next'
 
 const Footer = () => {
   const currentYear = new Date().getFullYear()
+  const { t } = useTranslation()
 
   const footerLinks = [
     {
-      title: 'Услуги',
+      title: t('footer.services'),
       links: [
         { name: 'Branding', href: '#services' },
         { name: 'Web Development', href: '#services' },
-        { name: 'SEO оптимизация', href: '#services' },
+        { name: t('services.seo.title'), href: '#services' },
         { name: 'Social Media', href: '#services' }
       ]
     },
     {
-      title: 'Компания',
+      title: t('footer.company'),
       links: [
-        { name: 'За нас', href: '#about' },
-        { name: 'Портфолио', href: '#portfolio' },
-        { name: 'Контакти', href: '#contact' }
+        { name: t('nav.about'), href: '#about' },
+        { name: t('nav.portfolio'), href: '#portfolio' },
+        { name: t('nav.contact'), href: '#contact' }
       ]
     },
     {
-      title: 'Контакти',
+      title: t('footer.contacts'),
       links: [
         { name: 'novareach2025@gmail.com', href: 'mailto:novareach2025@gmail.com' },
         { name: '+359 895 613 162', href: 'tel:+359895613162' },
-        { name: 'Кюстендил, България', href: null }
+        { name: t('contact.location'), href: null }
       ]
     }
   ]
@@ -58,10 +60,10 @@ const Footer = () => {
               whileHover={{ scale: 1.05 }}
             />
             <p className="text-gray-400 mb-4">
-              Expand. Evolve. Explode.
+              {t('hero.tagline')}
             </p>
             <p className="text-gray-500 text-sm">
-              Вашият доверен партньор за дигитален маркетинг и брандинг.
+              {t('footer.tagline')}
             </p>
           </div>
 
@@ -104,8 +106,10 @@ const Footer = () => {
         {/* Bottom Footer */}
         <div className="flex flex-col md:flex-row justify-between items-center gap-4">
           <div className="text-gray-400 text-sm text-center md:text-left">
-            © {currentYear} Nova Reach. Всички права запазени. 
-            
+            © {currentYear} Nova Reach. {t('footer.copyright')}
+            <span className="inline-flex items-center ml-1">
+              {t('footer.madeWith')} <FaHeart className="text-primary-pink mx-1 text-xs" /> {t('footer.madeIn')}
+            </span>
           </div>
 
           {/* Social Links */}

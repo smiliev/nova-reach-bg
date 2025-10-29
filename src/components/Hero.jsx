@@ -1,7 +1,10 @@
 import { motion } from 'framer-motion'
 import { FaArrowDown } from 'react-icons/fa'
+import { useTranslation } from 'react-i18next'
 
 const Hero = () => {
+  const { t } = useTranslation()
+  
   const scrollToAbout = () => {
     document.querySelector('#about').scrollIntoView({ behavior: 'smooth' })
   }
@@ -77,7 +80,7 @@ const Hero = () => {
           transition={{ duration: 0.8, delay: 0.4 }}
           className="text-4xl sm:text-5xl md:text-7xl font-bold mb-6"
         >
-          <span className="text-gradient">Expand. Evolve. Explode.</span>
+          <span className="text-gradient">{t('hero.tagline')}</span>
         </motion.h1>
 
         <motion.p
@@ -86,7 +89,7 @@ const Hero = () => {
           transition={{ duration: 0.8, delay: 0.6 }}
           className="text-xl sm:text-2xl md:text-3xl text-gray-300 mb-12 max-w-3xl mx-auto"
         >
-          Вашият доверен партньор за дигитален маркетинг и брандинг
+          {t('hero.subtitle')}
         </motion.p>
 
         <motion.div
@@ -105,7 +108,7 @@ const Hero = () => {
             whileHover={{ scale: 1.05, boxShadow: "0 20px 40px rgba(217, 34, 130, 0.3)" }}
             whileTap={{ scale: 0.95 }}
           >
-            Заявка за оферта
+            {t('hero.requestQuote')}
           </motion.a>
           <motion.a
             href="#services"
@@ -117,7 +120,7 @@ const Hero = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            Нашите услуги
+            {t('hero.ourServices')}
           </motion.a>
         </motion.div>
       </div>

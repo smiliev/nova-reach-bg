@@ -1,16 +1,19 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { FaBars, FaTimes } from 'react-icons/fa'
+import { useTranslation } from 'react-i18next'
+import LanguageSwitcher from './LanguageSwitcher'
 
 const Navbar = ({ scrolled }) => {
   const [isOpen, setIsOpen] = useState(false)
+  const { t } = useTranslation()
 
   const navItems = [
-    { name: 'Начало', href: '#hero' },
-    { name: 'За нас', href: '#about' },
-    { name: 'Услуги', href: '#services' },
-    // { name: 'Портфолио', href: '#portfolio' },
-    { name: 'Контакти', href: '#contact' },
+    { name: t('nav.home'), href: '#hero' },
+    { name: t('nav.about'), href: '#about' },
+    { name: t('nav.services'), href: '#services' },
+    // { name: t('nav.portfolio'), href: '#portfolio' },
+    { name: t('nav.contact'), href: '#contact' },
   ]
 
   const scrollToSection = (e, href) => {
@@ -44,7 +47,7 @@ const Navbar = ({ scrolled }) => {
           </motion.a>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-4">
             {navItems.map((item) => (
               <motion.a
                 key={item.name}
@@ -57,6 +60,7 @@ const Navbar = ({ scrolled }) => {
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-primary group-hover:w-full transition-all duration-300"></span>
               </motion.a>
             ))}
+            <LanguageSwitcher />
             <motion.a
               href="#contact"
               onClick={(e) => scrollToSection(e, '#contact')}
@@ -64,17 +68,20 @@ const Navbar = ({ scrolled }) => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              Свържи се с нас
+              {t('nav.contactUs')}
             </motion.a>
           </div>
 
-          {/* Mobile Menu Button */}
-          <button
-            className="md:hidden text-white text-2xl"
-            onClick={() => setIsOpen(!isOpen)}
-          >
-            {isOpen ? <FaTimes /> : <FaBars />}
-          </button>
+          {/* Mobile Menu Button & Language Switcher */}
+          <div className="md:hidden flex items-center space-x-3">
+            <LanguageSwitcher />
+            <button
+              className="text-white text-2xl"
+              onClick={() => setIsOpen(!isOpen)}
+            >
+              {isOpen ? <FaTimes /> : <FaBars />}
+            </button>
+          </div>
         </div>
       </div>
 
@@ -103,7 +110,7 @@ const Navbar = ({ scrolled }) => {
                 onClick={(e) => scrollToSection(e, '#contact')}
                 className="block w-full px-6 py-3 bg-gradient-primary rounded-full text-white font-semibold text-center"
               >
-                Свържи се с нас
+                {t('nav.contactUs')}
               </a>
             </div>
           </motion.div>

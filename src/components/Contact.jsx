@@ -2,10 +2,12 @@ import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef, useState } from 'react'
 import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaFacebook, FaInstagram, FaLinkedin } from 'react-icons/fa'
+import { useTranslation } from 'react-i18next'
 
 const Contact = () => {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: "-100px" })
+  const { t } = useTranslation()
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -25,27 +27,27 @@ const Contact = () => {
     e.preventDefault()
     // Here you would normally send the form data to a backend
     console.log('Form submitted:', formData)
-    alert('Благодарим ви за запитването! Ще се свържем с вас скоро.')
+    alert(t('contact.form.successMessage') || 'Thank you for your inquiry! We will contact you soon.')
     setFormData({ name: '', email: '', phone: '', service: '', message: '' })
   }
 
   const contactInfo = [
     {
       icon: <FaEnvelope className="text-2xl" />,
-      title: 'Email',
+      title: t('contact.email'),
       info: 'novareach2025@gmail.com',
       link: 'mailto:novareach2025@gmail.com'
     },
     {
       icon: <FaPhone className="text-2xl" />,
-      title: 'Телефон',
+      title: t('contact.phone'),
       info: '+359 895 613 162',
       link: 'tel:+359895613162'
     },
     {
       icon: <FaMapMarkerAlt className="text-2xl" />,
-      title: 'Адрес',
-      info: 'Кюстендил, България',
+      title: t('contact.address'),
+      info: t('contact.location'),
       link: null
     }
   ]
@@ -72,10 +74,10 @@ const Contact = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6">
-            Свържете се <span className="text-gradient">с нас</span>
+            {t('contact.title')} <span className="text-gradient">{t('contact.titleHighlight')}</span>
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Готови сме да обсъдим вашия проект и да ви помогнем да постигнете целите си
+            {t('contact.description')}
           </p>
         </motion.div>
 
@@ -86,7 +88,7 @@ const Contact = () => {
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8 }}
           >
-            <h3 className="text-3xl font-bold mb-8 text-white">Как да ни намерите</h3>
+            <h3 className="text-3xl font-bold mb-8 text-white">{t('contact.howToFind')}</h3>
             
             <div className="space-y-6 mb-8">
               {contactInfo.map((item, index) => (
@@ -116,7 +118,7 @@ const Contact = () => {
 
             {/* Social Links */}
             <div className="mt-8">
-              <h4 className="font-semibold text-white mb-4">Последвайте ни</h4>
+              <h4 className="font-semibold text-white mb-4">{t('contact.followUs')}</h4>
               <div className="flex space-x-4">
                 {socialLinks.map((social, index) => (
                   <motion.a
@@ -144,10 +146,10 @@ const Contact = () => {
               <div className="bg-gradient-primary p-1 rounded-2xl">
                 <div className="bg-dark-800 rounded-2xl p-8">
                   <h4 className="text-2xl font-bold text-white mb-4">
-                    Готови за <span className="text-gradient">експанзия</span>?
+                    {t('contact.readyTitle')} <span className="text-gradient">{t('contact.readyHighlight')}</span>?
                   </h4>
                   <p className="text-gray-400">
-                    Свържете се с нас днес и нека започнем да работим заедно върху вашия успех!
+                    {t('contact.readyDesc')}
                   </p>
                 </div>
               </div>
@@ -163,7 +165,7 @@ const Contact = () => {
             <form onSubmit={handleSubmit} className="bg-dark-800 border border-dark-600 rounded-2xl p-8">
               <div className="mb-6">
                 <label htmlFor="name" className="block text-gray-300 font-semibold mb-2">
-                  Име *
+                  {t('contact.form.name')} {t('contact.form.required')}
                 </label>
                 <input
                   type="text"
@@ -173,13 +175,13 @@ const Contact = () => {
                   onChange={handleChange}
                   required
                   className="w-full px-4 py-3 bg-dark-700 border border-dark-600 rounded-lg text-white focus:outline-none focus:border-primary-cyan transition-colors"
-                  placeholder="Вашето име"
+                  placeholder={t('contact.form.namePlaceholder')}
                 />
               </div>
 
               <div className="mb-6">
                 <label htmlFor="email" className="block text-gray-300 font-semibold mb-2">
-                  Email *
+                  {t('contact.form.email')} {t('contact.form.required')}
                 </label>
                 <input
                   type="email"
@@ -189,13 +191,13 @@ const Contact = () => {
                   onChange={handleChange}
                   required
                   className="w-full px-4 py-3 bg-dark-700 border border-dark-600 rounded-lg text-white focus:outline-none focus:border-primary-cyan transition-colors"
-                  placeholder="your@email.com"
+                  placeholder={t('contact.form.emailPlaceholder')}
                 />
               </div>
 
               <div className="mb-6">
                 <label htmlFor="phone" className="block text-gray-300 font-semibold mb-2">
-                  Телефон
+                  {t('contact.form.phone')}
                 </label>
                 <input
                   type="tel"
@@ -204,13 +206,13 @@ const Contact = () => {
                   value={formData.phone}
                   onChange={handleChange}
                   className="w-full px-4 py-3 bg-dark-700 border border-dark-600 rounded-lg text-white focus:outline-none focus:border-primary-cyan transition-colors"
-                  placeholder="+359 888 123 456"
+                  placeholder={t('contact.form.phonePlaceholder')}
                 />
               </div>
 
               <div className="mb-6">
                 <label htmlFor="service" className="block text-gray-300 font-semibold mb-2">
-                  Интересувате се от
+                  {t('contact.form.service')}
                 </label>
                 <select
                   id="service"
@@ -219,21 +221,21 @@ const Contact = () => {
                   onChange={handleChange}
                   className="w-full px-4 py-3 bg-dark-700 border border-dark-600 rounded-lg text-white focus:outline-none focus:border-primary-cyan transition-colors"
                 >
-                  <option value="">Изберете услуга</option>
-                  <option value="branding">Branding</option>
-                  <option value="web">Web Development</option>
-                  <option value="seo">SEO оптимизация</option>
-                  <option value="social">Social Media Marketing</option>
-                  <option value="performance">Performance Marketing</option>
-                  <option value="email">Email Marketing</option>
-                  <option value="creative">Creative Production</option>
-                  <option value="other">Друго</option>
+                  <option value="">{t('contact.form.selectService')}</option>
+                  <option value="branding">{t('contact.form.services.branding')}</option>
+                  <option value="web">{t('contact.form.services.web')}</option>
+                  <option value="seo">{t('contact.form.services.seo')}</option>
+                  <option value="social">{t('contact.form.services.social')}</option>
+                  <option value="performance">{t('contact.form.services.performance')}</option>
+                  <option value="email">{t('contact.form.services.email')}</option>
+                  <option value="creative">{t('contact.form.services.creative')}</option>
+                  <option value="other">{t('contact.form.services.other')}</option>
                 </select>
               </div>
 
               <div className="mb-6">
                 <label htmlFor="message" className="block text-gray-300 font-semibold mb-2">
-                  Съобщение *
+                  {t('contact.form.message')} {t('contact.form.required')}
                 </label>
                 <textarea
                   id="message"
@@ -243,7 +245,7 @@ const Contact = () => {
                   required
                   rows="5"
                   className="w-full px-4 py-3 bg-dark-700 border border-dark-600 rounded-lg text-white focus:outline-none focus:border-primary-cyan transition-colors resize-none"
-                  placeholder="Разкажете ни за вашия проект..."
+                  placeholder={t('contact.form.messagePlaceholder')}
                 ></textarea>
               </div>
 
@@ -253,7 +255,7 @@ const Contact = () => {
                 whileHover={{ scale: 1.02, boxShadow: "0 20px 40px rgba(217, 34, 130, 0.3)" }}
                 whileTap={{ scale: 0.98 }}
               >
-                Изпратете запитване
+                {t('contact.form.submit')}
               </motion.button>
             </form>
           </motion.div>

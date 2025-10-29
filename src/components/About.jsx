@@ -2,31 +2,33 @@ import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef } from 'react'
 import { FaRocket, FaChartLine, FaLightbulb, FaUsers } from 'react-icons/fa'
+import { useTranslation } from 'react-i18next'
 
 const About = () => {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: "-100px" })
+  const { t } = useTranslation()
 
   const features = [
     {
       icon: <FaRocket className="text-4xl" />,
-      title: 'Иновативни решения',
-      description: 'Използваме най-новите технологии и стратегии за максимален резултат'
+      title: t('about.feature1Title'),
+      description: t('about.feature1Desc')
     },
     {
       icon: <FaChartLine className="text-4xl" />,
-      title: 'Измерими резултати',
-      description: 'Фокусираме се върху данните и постигаме конкретни бизнес цели'
+      title: t('about.feature2Title'),
+      description: t('about.feature2Desc')
     },
     {
       icon: <FaLightbulb className="text-4xl" />,
-      title: 'Креативен подход',
-      description: 'Създаваме уникално съдържание, което привлича и ангажира аудиторията'
+      title: t('about.feature3Title'),
+      description: t('about.feature3Desc')
     },
     {
       icon: <FaUsers className="text-4xl" />,
-      title: 'Персонален подход',
-      description: 'Работим в близка връзка с вас, като разбираме вашите цели и нужди'
+      title: t('about.feature4Title'),
+      description: t('about.feature4Desc')
     }
   ]
 
@@ -46,11 +48,10 @@ const About = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6">
-            За <span className="text-gradient">Nova Reach</span>
+            {t('about.title')} <span className="text-gradient">{t('about.titleHighlight')}</span>
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Ние сме дигитална маркетинг агенция, специализирана в създаването на иновативни решения, 
-            които помагат на бизнеса да расте и да се развива в съвременния дигитален свят.
+            {t('about.description')}
           </p>
         </motion.div>
 
@@ -83,15 +84,15 @@ const About = () => {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
               <div>
                 <h3 className="text-5xl font-bold text-gradient mb-2">80+</h3>
-                <p className="text-gray-300">Успешни проекта</p>
+                <p className="text-gray-300">{t('about.stat1')}</p>
               </div>
               <div>
                 <h3 className="text-5xl font-bold text-gradient mb-2">40+</h3>
-                <p className="text-gray-300">Доволни клиенти</p>
+                <p className="text-gray-300">{t('about.stat2')}</p>
               </div>
               <div>
                 <h3 className="text-5xl font-bold text-gradient mb-2">3+</h3>
-                <p className="text-gray-300">Години опит</p>
+                <p className="text-gray-300">{t('about.stat3')}</p>
               </div>
             </div>
           </div>
