@@ -376,16 +376,24 @@ const resources = {
   }
 }
 
+// Get stored language or default to 'bg'
+const storedLanguage = localStorage.getItem('language') || 'bg'
+
 i18n
   .use(initReactI18next)
   .init({
     resources,
-    lng: 'bg', // Default language
+    lng: storedLanguage, // Use stored language or default
     fallbackLng: 'bg',
     interpolation: {
       escapeValue: false
     }
   })
+
+// Save language to localStorage whenever it changes
+i18n.on('languageChanged', (lng) => {
+  localStorage.setItem('language', lng)
+})
 
 export default i18n
 
