@@ -25,9 +25,9 @@ const Footer = () => {
     {
       title: 'Контакти',
       links: [
-        { name: 'info@novareach.bg', href: 'mailto:info@novareach.bg' },
-        { name: '+359 888 123 456', href: 'tel:+359888123456' },
-        { name: 'София, България', href: null }
+        { name: 'novareach2025@gmail.com', href: 'mailto:novareach2025@gmail.com' },
+        { name: '+359 895 613 162', href: 'tel:+359895613162' },
+        { name: 'Кюстендил, България', href: null }
       ]
     }
   ]
@@ -105,9 +105,7 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row justify-between items-center gap-4">
           <div className="text-gray-400 text-sm text-center md:text-left">
             © {currentYear} Nova Reach. Всички права запазени. 
-            <span className="inline-flex items-center ml-1">
-              Създадено с <FaHeart className="text-primary-pink mx-1 text-xs" /> в България
-            </span>
+            
           </div>
 
           {/* Social Links */}

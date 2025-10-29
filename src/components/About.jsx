@@ -82,15 +82,15 @@ const About = () => {
           <div className="bg-dark-700 rounded-3xl p-8 md:p-12">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
               <div>
-                <h3 className="text-5xl font-bold text-gradient mb-2">100+</h3>
+                <h3 className="text-5xl font-bold text-gradient mb-2">80+</h3>
                 <p className="text-gray-300">Успешни проекта</p>
               </div>
               <div>
-                <h3 className="text-5xl font-bold text-gradient mb-2">50+</h3>
+                <h3 className="text-5xl font-bold text-gradient mb-2">40+</h3>
                 <p className="text-gray-300">Доволни клиенти</p>
               </div>
               <div>
-                <h3 className="text-5xl font-bold text-gradient mb-2">5+</h3>
+                <h3 className="text-5xl font-bold text-gradient mb-2">3+</h3>
                 <p className="text-gray-300">Години опит</p>
               </div>
             </div>

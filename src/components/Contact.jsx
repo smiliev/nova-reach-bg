@@ -33,19 +33,19 @@ const Contact = () => {
     {
       icon: <FaEnvelope className="text-2xl" />,
       title: 'Email',
-      info: 'info@novareach.bg',
-      link: 'mailto:info@novareach.bg'
+      info: 'novareach2025@gmail.com',
+      link: 'mailto:novareach2025@gmail.com'
     },
     {
       icon: <FaPhone className="text-2xl" />,
       title: 'Телефон',
-      info: '+359 888 123 456',
-      link: 'tel:+359888123456'
+      info: '+359 895 613 162',
+      link: 'tel:+359895613162'
     },
     {
       icon: <FaMapMarkerAlt className="text-2xl" />,
       title: 'Адрес',
-      info: 'София, България',
+      info: 'Кюстендил, България',
       link: null
     }
   ]
