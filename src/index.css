@@ -29,3 +29,10 @@ html {
   }
 }
 
+/* Hide scroll indicator on short viewports */
+@media (max-height: 700px) {
+  .hide-on-short-viewport {
+    display: none;
+  }
+}
+
