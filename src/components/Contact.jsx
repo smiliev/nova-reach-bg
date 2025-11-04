@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef, useState } from 'react'
-import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaFacebook, FaInstagram, FaLinkedin } from 'react-icons/fa'
+import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaFacebook, FaInstagram, FaTiktok } from 'react-icons/fa'
 import { useTranslation } from 'react-i18next'
 
 const Contact = () => {
@@ -53,9 +53,9 @@ const Contact = () => {
   ]
 
   const socialLinks = [
-    { icon: <FaFacebook className="text-2xl" />, link: '#', name: 'Facebook' },
-    { icon: <FaInstagram className="text-2xl" />, link: '#', name: 'Instagram' },
-    { icon: <FaLinkedin className="text-2xl" />, link: '#', name: 'LinkedIn' }
+    { icon: <FaFacebook className="text-2xl" />, link: 'https://www.facebook.com/people/NovaReach/61581990145831/', name: 'Facebook' },
+    { icon: <FaInstagram className="text-2xl" />, link: 'https://www.instagram.com/novareach.agency', name: 'Instagram' },
+    { icon: <FaTiktok className="text-2xl" />, link: 'https://www.tiktok.com/@novareach.agency', name: 'TikTok' }
   ]
 
   return (
