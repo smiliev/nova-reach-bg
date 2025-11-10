@@ -15,6 +15,7 @@ const Contact = () => {
     service: '',
     message: ''
   })
+  const [submitStatus, setSubmitStatus] = useState('idle') // idle, submitting, success, error
 
   const handleChange = (e) => {
     setFormData({
@@ -23,11 +24,44 @@ const Contact = () => {
     })
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    // Here you would normally send the form data to a backend
-    console.log('Form submitted:', formData)
-    alert(t('contact.form.successMessage') || 'Thank you for your inquiry! We will contact you soon.')
+    setSubmitStatus('submitting')
+    
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          access_key: 'c719e2cb-94ff-4cd7-bc4d-b7018b7573d9',
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          service: formData.service,
+          message: formData.message,
+          subject: `Nova Reach - New inquiry from ${formData.name}`
+        })
+      })
+
+      const result = await response.json()
+
+      if (result.success) {
+        setSubmitStatus('success')
+        setFormData({ name: '', email: '', phone: '', service: '', message: '' })
+      } else {
+        throw new Error('Form submission failed')
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error)
+      setSubmitStatus('error')
+    }
+  }
+
+  const resetForm = () => {
+    setSubmitStatus('idle')
     setFormData({ name: '', email: '', phone: '', service: '', message: '' })
   }
 
@@ -162,7 +196,70 @@ const Contact = () => {
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8 }}
           >
-            <form onSubmit={handleSubmit} className="bg-dark-800 border border-dark-600 rounded-2xl p-8">
+            {submitStatus === 'success' ? (
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                className="bg-dark-800 border border-primary-cyan rounded-2xl p-8 text-center"
+              >
+                <motion.div
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
+                  className="w-20 h-20 bg-gradient-primary rounded-full flex items-center justify-center mx-auto mb-6"
+                >
+                  <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                  </svg>
+                </motion.div>
+                <h3 className="text-2xl font-bold text-white mb-4">
+                  {t('contact.form.successTitle') || 'Благодарим ви!'}
+                </h3>
+                <p className="text-gray-300 mb-8">
+                  {t('contact.form.successMessage')}
+                </p>
+                <motion.button
+                  onClick={resetForm}
+                  className="px-8 py-3 bg-gradient-primary rounded-lg text-white font-semibold"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  {t('contact.form.sendAnother') || 'Изпратете друго съобщение'}
+                </motion.button>
+              </motion.div>
+            ) : submitStatus === 'error' ? (
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                className="bg-dark-800 border border-red-500 rounded-2xl p-8 text-center"
+              >
+                <motion.div
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
+                  className="w-20 h-20 bg-red-500/20 border-2 border-red-500 rounded-full flex items-center justify-center mx-auto mb-6"
+                >
+                  <svg className="w-10 h-10 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </motion.div>
+                <h3 className="text-2xl font-bold text-white mb-4">
+                  {t('contact.form.errorTitle') || 'Нещо се обърка'}
+                </h3>
+                <p className="text-gray-300 mb-8">
+                  {t('contact.form.errorMessage')}
+                </p>
+                <motion.button
+                  onClick={() => setSubmitStatus('idle')}
+                  className="px-8 py-3 bg-gradient-primary rounded-lg text-white font-semibold"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  {t('contact.form.tryAgain') || 'Опитайте отново'}
+                </motion.button>
+              </motion.div>
+            ) : (
+              <form onSubmit={handleSubmit} className="bg-dark-800 border border-dark-600 rounded-2xl p-8">
               <div className="mb-6">
                 <label htmlFor="name" className="block text-gray-300 font-semibold mb-2">
                   {t('contact.form.name')} {t('contact.form.required')}
@@ -251,13 +348,29 @@ const Contact = () => {
 
               <motion.button
                 type="submit"
-                className="w-full px-8 py-4 bg-gradient-primary rounded-lg text-white font-semibold text-lg shadow-lg"
-                whileHover={{ scale: 1.02, boxShadow: "0 20px 40px rgba(217, 34, 130, 0.3)" }}
-                whileTap={{ scale: 0.98 }}
+                disabled={submitStatus === 'submitting'}
+                className={`w-full px-8 py-4 rounded-lg text-white font-semibold text-lg shadow-lg transition-all ${
+                  submitStatus === 'submitting' 
+                    ? 'bg-gray-600 cursor-not-allowed' 
+                    : 'bg-gradient-primary'
+                }`}
+                whileHover={submitStatus !== 'submitting' ? { scale: 1.02, boxShadow: "0 20px 40px rgba(217, 34, 130, 0.3)" } : {}}
+                whileTap={submitStatus !== 'submitting' ? { scale: 0.98 } : {}}
               >
-                {t('contact.form.submit')}
+                {submitStatus === 'submitting' ? (
+                  <span className="flex items-center justify-center">
+                    <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" fill="none" viewBox="0 0 24 24">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    {t('contact.form.sending') || 'Изпращане...'}
+                  </span>
+                ) : (
+                  t('contact.form.submit')
+                )}
               </motion.button>
             </form>
+            )}
           </motion.div>
         </div>
       </div>
