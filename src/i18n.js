@@ -183,6 +183,20 @@ const resources = {
           }
         }
       },
+      videoPortfolio: {
+        title: "Видео",
+        titleHighlight: "портфолио",
+        description: "Разгледайте някои от нашите най-успешни проекти в действие"
+      },
+      reviews: {
+        title: "Какво казват нашите",
+        titleHighlight: "клиенти",
+        description: "Отзиви от доволни клиенти, които са работили с нас",
+        basedOn: "Базирано на",
+        reviews: "отзива",
+        cta: "Работили ли сте с нас? Споделете вашия опит!",
+        leaveReview: "Оставете отзив в Google"
+      },
       footer: {
         tagline: "Вашият доверен партньор за дигитален маркетинг и брандинг.",
         services: "Услуги",
@@ -374,6 +388,20 @@ const resources = {
             other: "Other"
           }
         }
+      },
+      videoPortfolio: {
+        title: "Video",
+        titleHighlight: "Portfolio",
+        description: "Watch some of our most successful projects in action"
+      },
+      reviews: {
+        title: "What our",
+        titleHighlight: "clients say",
+        description: "Reviews from satisfied clients who have worked with us",
+        basedOn: "Based on",
+        reviews: "reviews",
+        cta: "Worked with us? Share your experience!",
+        leaveReview: "Leave a Google Review"
       },
       footer: {
         tagline: "Your trusted partner for digital marketing and branding.",
