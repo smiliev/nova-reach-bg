@@ -1,46 +1,60 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
-import { useRef, useState } from 'react'
+import { useRef, useState, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
-import { FaPlay } from 'react-icons/fa'
+import { FaPlay, FaSpinner } from 'react-icons/fa'
+
+// Fallback videos in case API fails
+const fallbackVideos = [
+  {
+    id: 1,
+    title: 'Nova Reach Portfolio',
+    thumbnail: 'https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?w=800&q=80',
+    videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+    description: 'Check out our work'
+  }
+]
 
 const VideoPortfolio = () => {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: "-100px" })
   const { t } = useTranslation()
   const [activeVideo, setActiveVideo] = useState(null)
+  const [videos, setVideos] = useState([])
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(null)
 
-  // Placeholder videos - replace with your actual video URLs
-  const videos = [
-    {
-      id: 1,
-      title: 'Social Media Campaign',
-      thumbnail: 'https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?w=800&q=80',
-      videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ', // Replace with actual video
-      description: 'Successful social media campaign for retail brand'
-    },
-    {
-      id: 2,
-      title: 'Brand Identity Video',
-      thumbnail: 'https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=800&q=80',
-      videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ', // Replace with actual video
-      description: 'Complete brand identity presentation'
-    },
-    {
-      id: 3,
-      title: 'Product Launch',
-      thumbnail: 'https://images.unsplash.com/photo-1533750516457-a7f992034fec?w=800&q=80',
-      videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ', // Replace with actual video
-      description: 'Product launch campaign video'
-    },
-    {
-      id: 4,
-      title: 'Client Testimonial',
-      thumbnail: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?w=800&q=80',
-      videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ', // Replace with actual video
-      description: 'Happy client testimonial video'
+  // Fetch videos from Cloudflare Function
+  useEffect(() => {
+    const fetchVideos = async () => {
+      try {
+        const response = await fetch('/api/videos')
+        
+        if (!response.ok) {
+          throw new Error('Failed to fetch videos')
+        }
+        
+        const data = await response.json()
+        
+        if (data.error) {
+          throw new Error(data.error)
+        }
+        
+        setVideos(data)
+        setError(null)
+      } catch (err) {
+        console.error('Error loading videos:', err)
+        setError(err.message)
+        // Use fallback videos if API fails
+        setVideos(fallbackVideos)
+      } finally {
+        setLoading(false)
+      }
     }
-  ]
+
+    fetchVideos()
+  }, [])
+
 
   return (
     <section id="video-portfolio" className="relative py-20 md:py-32 bg-dark-900 overflow-hidden">
@@ -63,9 +77,24 @@ const VideoPortfolio = () => {
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
             {t('videoPortfolio.description')}
           </p>
+          {error && (
+            <p className="text-yellow-400 text-sm mt-4">
+              ⚠️ {t('videoPortfolio.loadingError') || 'Loading from fallback data'}
+            </p>
+          )}
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {loading ? (
+          <div className="flex justify-center items-center py-20">
+            <motion.div
+              animate={{ rotate: 360 }}
+              transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+            >
+              <FaSpinner className="text-6xl text-gradient" />
+            </motion.div>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {videos.map((video, index) => (
             <motion.div
               key={video.id}
@@ -126,7 +155,8 @@ const VideoPortfolio = () => {
               )}
             </motion.div>
           ))}
-        </div>
+          </div>
+        )}
       </div>
     </section>
   )

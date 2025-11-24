@@ -186,7 +186,8 @@ const resources = {
       videoPortfolio: {
         title: "Видео",
         titleHighlight: "портфолио",
-        description: "Разгледайте някои от нашите най-успешни проекти в действие"
+        description: "Разгледайте някои от нашите най-успешни проекти в действие",
+        loadingError: "Зареждане от резервни данни"
       },
       reviews: {
         title: "Какво казват нашите",
@@ -195,7 +196,8 @@ const resources = {
         basedOn: "Базирано на",
         reviews: "отзива",
         cta: "Работили ли сте с нас? Споделете вашия опит!",
-        leaveReview: "Оставете отзив в Google"
+        leaveReview: "Оставете отзив в Google",
+        loadingError: "Зареждане от резервни данни"
       },
       footer: {
         tagline: "Вашият доверен партньор за дигитален маркетинг и брандинг.",
@@ -392,7 +394,8 @@ const resources = {
       videoPortfolio: {
         title: "Video",
         titleHighlight: "Portfolio",
-        description: "Watch some of our most successful projects in action"
+        description: "Watch some of our most successful projects in action",
+        loadingError: "Loading from fallback data"
       },
       reviews: {
         title: "What our",
@@ -401,7 +404,8 @@ const resources = {
         basedOn: "Based on",
         reviews: "reviews",
         cta: "Worked with us? Share your experience!",
-        leaveReview: "Leave a Google Review"
+        leaveReview: "Leave a Google Review",
+        loadingError: "Loading from fallback data"
       },
       footer: {
         tagline: "Your trusted partner for digital marketing and branding.",

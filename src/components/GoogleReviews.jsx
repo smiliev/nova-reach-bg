@@ -1,52 +1,93 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
-import { useRef } from 'react'
+import { useRef, useState, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
-import { FaStar, FaGoogle } from 'react-icons/fa'
+import { FaStar, FaGoogle, FaSpinner } from 'react-icons/fa'
+
+// Fallback reviews in case API fails
+const fallbackReviews = [
+  {
+    id: 1,
+    name: 'Иван Петров',
+    rating: 5,
+    date: '2 months ago',
+    text: 'Страхотна агенция! Професионално отношение и отлични резултати. Препоръчвам!',
+    avatar: 'https://ui-avatars.com/api/?name=Ivan+Petrov&background=D92282&color=fff',
+    platform: 'google'
+  },
+  {
+    id: 2,
+    name: 'Maria Georgieva',
+    rating: 5,
+    date: '1 month ago',
+    text: 'Excellent service and great communication. They helped us grow our online presence significantly.',
+    avatar: 'https://ui-avatars.com/api/?name=Maria+Georgieva&background=1EBBEC&color=fff',
+    platform: 'google'
+  },
+  {
+    id: 3,
+    name: 'Георги Димитров',
+    rating: 5,
+    date: '3 weeks ago',
+    text: 'Много съм доволен от работата им. Екипът е креативен и винаги отговаря бързо на нашите нужди.',
+    avatar: 'https://ui-avatars.com/api/?name=Georgi+Dimitrov&background=D92282&color=fff',
+    platform: 'google'
+  },
+  {
+    id: 4,
+    name: 'Elena Ivanova',
+    rating: 5,
+    date: '2 weeks ago',
+    text: 'Professional team with great expertise in digital marketing. Highly recommend their services!',
+    avatar: 'https://ui-avatars.com/api/?name=Elena+Ivanova&background=1EBBEC&color=fff',
+    platform: 'google'
+  }
+]
 
 const GoogleReviews = () => {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: "-100px" })
   const { t } = useTranslation()
+  const [reviews, setReviews] = useState([])
+  const [averageRating, setAverageRating] = useState(5.0)
+  const [totalReviews, setTotalReviews] = useState(0)
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(null)
 
-  // Replace with your actual Google reviews
-  const reviews = [
-    {
-      id: 1,
-      name: 'Иван Петров',
-      rating: 5,
-      date: '2 months ago',
-      text: 'Страхотна агенция! Професионално отношение и отлични резултати. Препоръчвам!',
-      avatar: 'https://ui-avatars.com/api/?name=Ivan+Petrov&background=D92282&color=fff'
-    },
-    {
-      id: 2,
-      name: 'Maria Georgieva',
-      rating: 5,
-      date: '1 month ago',
-      text: 'Excellent service and great communication. They helped us grow our online presence significantly.',
-      avatar: 'https://ui-avatars.com/api/?name=Maria+Georgieva&background=1EBBEC&color=fff'
-    },
-    {
-      id: 3,
-      name: 'Георги Димитров',
-      rating: 5,
-      date: '3 weeks ago',
-      text: 'Много съм доволен от работата им. Екипът е креативен и винаги отговаря бързо на нашите нужди.',
-      avatar: 'https://ui-avatars.com/api/?name=Georgi+Dimitrov&background=D92282&color=fff'
-    },
-    {
-      id: 4,
-      name: 'Elena Ivanova',
-      rating: 5,
-      date: '2 weeks ago',
-      text: 'Professional team with great expertise in digital marketing. Highly recommend their services!',
-      avatar: 'https://ui-avatars.com/api/?name=Elena+Ivanova&background=1EBBEC&color=fff'
+  // Fetch reviews from Cloudflare Function
+  useEffect(() => {
+    const fetchReviews = async () => {
+      try {
+        const response = await fetch('/api/reviews')
+        
+        if (!response.ok) {
+          throw new Error('Failed to fetch reviews')
+        }
+        
+        const data = await response.json()
+        
+        if (data.error) {
+          throw new Error(data.error)
+        }
+        
+        setReviews(data.reviews || [])
+        setAverageRating(data.averageRating || 5.0)
+        setTotalReviews(data.totalReviews || data.reviews?.length || 0)
+        setError(null)
+      } catch (err) {
+        console.error('Error loading reviews:', err)
+        setError(err.message)
+        // Use fallback reviews if API fails
+        setReviews(fallbackReviews)
+        setAverageRating(5.0)
+        setTotalReviews(fallbackReviews.length)
+      } finally {
+        setLoading(false)
+      }
     }
-  ]
 
-  const averageRating = 5.0
-  const totalReviews = reviews.length
+    fetchReviews()
+  }, [])
 
   return (
     <section id="reviews" className="relative py-20 md:py-32 bg-dark-800 overflow-hidden">
@@ -69,14 +110,30 @@ const GoogleReviews = () => {
           <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
             {t('reviews.description')}
           </p>
+          {error && (
+            <p className="text-yellow-400 text-sm mb-4">
+              ⚠️ {t('reviews.loadingError') || 'Loading from fallback data'}
+            </p>
+          )}
 
-          {/* Google Rating Summary */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={isInView ? { opacity: 1, scale: 1 } : {}}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="inline-flex items-center gap-4 bg-dark-700 px-8 py-4 rounded-full border border-dark-600"
-          >
+          {loading ? (
+            <div className="flex justify-center items-center py-20">
+              <motion.div
+                animate={{ rotate: 360 }}
+                transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+              >
+                <FaSpinner className="text-6xl text-gradient" />
+              </motion.div>
+            </div>
+          ) : (
+            <>
+              {/* Google Rating Summary */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={isInView ? { opacity: 1, scale: 1 } : {}}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                className="inline-flex items-center gap-4 bg-dark-700 px-8 py-4 rounded-full border border-dark-600"
+              >
             <FaGoogle className="text-4xl text-white" />
             <div className="text-left">
               <div className="flex items-center gap-2 mb-1">
@@ -92,10 +149,13 @@ const GoogleReviews = () => {
               </p>
             </div>
           </motion.div>
+            </>
+          )}
         </motion.div>
 
         {/* Reviews Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {!loading && (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {reviews.map((review, index) => (
             <motion.div
               key={review.id}
@@ -129,10 +189,12 @@ const GoogleReviews = () => {
               <p className="text-gray-300 leading-relaxed">{review.text}</p>
             </motion.div>
           ))}
-        </div>
+          </div>
+        )}
 
         {/* CTA to leave review */}
-        <motion.div
+        {!loading && (
+          <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.6 }}
@@ -150,7 +212,8 @@ const GoogleReviews = () => {
             <FaGoogle className="text-xl" />
             {t('reviews.leaveReview')}
           </motion.a>
-        </motion.div>
+          </motion.div>
+        )}
       </div>
     </section>
   )
