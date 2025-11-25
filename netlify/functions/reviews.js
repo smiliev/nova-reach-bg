@@ -1,44 +1,44 @@
 /**
- * Cloudflare Pages Function to fetch Google Business reviews
+ * Netlify Function to fetch Google Business reviews
  * 
  * Setup:
- * 1. Create Google Business Profile: https://business.google.com/
- * 2. Get your Place ID: https://developers.google.com/maps/documentation/places/web-service/place-id
- * 3. Add GOOGLE_PLACES_API_KEY to Cloudflare Pages environment variables
- * 4. This function will be available at: /api/reviews
+ * 1. Get your Place ID: https://developers.google.com/maps/documentation/places/web-service/place-id
+ * 2. Add GOOGLE_PLACES_API_KEY (or YOUTUBE_API_KEY) to Netlify environment variables
+ * 3. Update PLACE_ID below with your actual Place ID
+ * 4. This function will be available at: /.netlify/functions/reviews
+ * 5. Redirected to: /api/reviews (via netlify.toml)
  */
 
-export async function onRequest(context) {
-  const { env } = context
-  
-  // Your Google Place ID - REPLACE THIS with your actual Place ID
-  // Get it from: https://developers.google.com/maps/documentation/places/web-service/place-id
-  const PLACE_ID = 'YOUR_PLACE_ID_HERE' // e.g., 'ChIJN1t_tDeuEmsRUsoyG83frY4'
-  
+// Your Google Place ID - REPLACE THIS with your actual Place ID
+const PLACE_ID = 'YOUR_PLACE_ID_HERE' // e.g., 'ChIJN1t_tDeuEmsRUsoyG83frY4'
+
+exports.handler = async (event, context) => {
   // Get API key from environment variables (can use same key as YouTube)
-  const API_KEY = env.GOOGLE_PLACES_API_KEY || env.YOUTUBE_API_KEY
-  
+  const API_KEY = process.env.GOOGLE_PLACES_API_KEY || process.env.YOUTUBE_API_KEY
+
   if (!API_KEY) {
-    return new Response(
-      JSON.stringify({ error: 'Google Places API key not configured' }),
-      {
-        status: 500,
-        headers: { 'Content-Type': 'application/json' }
-      }
-    )
+    return {
+      statusCode: 500,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ 
+        error: 'Google Places API key not configured' 
+      }),
+    }
   }
 
   if (PLACE_ID === 'YOUR_PLACE_ID_HERE') {
-    return new Response(
-      JSON.stringify({ 
+    return {
+      statusCode: 500,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ 
         error: 'Place ID not configured',
-        message: 'Please update PLACE_ID in /functions/api/reviews.js'
+        message: 'Please update PLACE_ID in /netlify/functions/reviews.js'
       }),
-      {
-        status: 500,
-        headers: { 'Content-Type': 'application/json' }
-      }
-    )
+    }
   }
 
   try {
@@ -75,27 +75,29 @@ export async function onRequest(context) {
       totalReviews: result.user_ratings_total || reviews.length
     }
 
-    return new Response(JSON.stringify(responseData), {
+    return {
+      statusCode: 200,
       headers: {
         'Content-Type': 'application/json',
         'Cache-Control': 'public, max-age=3600', // Cache for 1 hour
-        'Access-Control-Allow-Origin': '*'
-      }
-    })
+        'Access-Control-Allow-Origin': '*',
+      },
+      body: JSON.stringify(responseData),
+    }
 
   } catch (error) {
     console.error('Error fetching Google reviews:', error)
     
-    return new Response(
-      JSON.stringify({ 
+    return {
+      statusCode: 500,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ 
         error: 'Failed to fetch reviews',
         message: error.message 
       }),
-      {
-        status: 500,
-        headers: { 'Content-Type': 'application/json' }
-      }
-    )
+    }
   }
 }
 

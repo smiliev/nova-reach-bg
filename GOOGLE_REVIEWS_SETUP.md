@@ -2,6 +2,12 @@
 
 This guide will help you set up automatic review fetching from your Google Business Profile.
 
+**Note:** This guide is for setting up the Google Places API. For deployment instructions:
+- **Netlify**: See `NETLIFY_DEPLOY.md`
+- **Cloudflare Pages**: See old setup in git history
+
+---
+
 ## 📋 Overview
 
 Your website will automatically fetch reviews from Google Business Profile.

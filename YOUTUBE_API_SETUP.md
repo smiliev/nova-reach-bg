@@ -1,4 +1,10 @@
-# YouTube API + Cloudflare Worker Setup Guide 🎬
+# YouTube API Setup Guide 🎬
+
+**Note:** This guide is for setting up the YouTube API. For deployment instructions:
+- **Netlify**: See `NETLIFY_DEPLOY.md`
+- **Cloudflare Pages**: See old setup in git history
+
+---
 
 This guide will help you set up automatic video fetching from your YouTube playlist.
 
