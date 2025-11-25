@@ -188,9 +188,7 @@ const resources = {
         services: "Услуги",
         company: "Компания",
         contacts: "Контакти",
-        copyright: "Всички права запазени.",
-        madeWith: "Създадено с",
-        madeIn: "в България"
+        copyright: "Всички права запазени."
       }
     }
   },
@@ -380,9 +378,7 @@ const resources = {
         services: "Services",
         company: "Company",
         contacts: "Contacts",
-        copyright: "All rights reserved.",
-        madeWith: "Made with",
-        madeIn: "in Bulgaria"
+        copyright: "All rights reserved."
       }
     }
   }

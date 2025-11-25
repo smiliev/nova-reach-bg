@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { FaFacebook, FaInstagram, FaTiktok, FaHeart } from 'react-icons/fa'
+import { FaFacebook, FaInstagram, FaTiktok } from 'react-icons/fa'
 import { useTranslation } from 'react-i18next'
 
 const Footer = () => {
@@ -107,9 +107,6 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row justify-between items-center gap-4">
           <div className="text-gray-400 text-sm text-center md:text-left">
             © {currentYear} Nova Reach. {t('footer.copyright')}
-            <span className="inline-flex items-center ml-1">
-              {t('footer.madeWith')} <FaHeart className="text-primary-pink mx-1 text-xs" /> {t('footer.madeIn')}
-            </span>
           </div>
 
           {/* Social Links */}
