@@ -170,7 +170,7 @@ const resources = {
           errorTitle: "Нещо се обърка",
           errorMessage: "Вашето съобщение не можа да бъде изпратено. Моля, опитайте отново или се свържете с нас директно.",
           sendAnother: "Изпратете друго съобщение",
-          tryAgain: "Опитайте отново",
+          tryAgain: "Опитайте пак",
           services: {
             branding: "Branding",
             web: "Web Development",
