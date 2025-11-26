@@ -7,7 +7,7 @@ const resources = {
       nav: {
         home: "Начало",
         about: "За нас",
-        services: "Услуги",
+        services: "Нашите услуги",
         portfolio: "Портфолио",
         contact: "Контакти",
         contactUs: "Свържи се с нас"
