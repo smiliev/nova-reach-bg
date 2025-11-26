@@ -14,9 +14,9 @@ const resources = {
       },
       hero: {
         tagline: "Expand. Evolve. Explode.",
-        subtitle: "Вашият доверен партньор за дигитален маркетинг и брандинг",
-        requestQuote: "Заявка за оферта",
-        ourServices: "Нашите услуги"
+        subtitle: "Ръст. Конверсии. Видимост. Оптимизация. Всичко, което движи бизнеса напред.",
+        requestQuote: "Заяви безплатна консултация",
+        ourServices: "Виж нашите услуги"
       },
       about: {
         title: "За",
