@@ -6,6 +6,7 @@ import About from './components/About'
 import Portfolio from './components/Portfolio'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
+import CookieConsent from './components/CookieConsent'
 
 function App() {
   const [scrolled, setScrolled] = useState(false)
@@ -28,6 +29,7 @@ function App() {
       {/* <Portfolio /> */}
       <Contact />
       <Footer />
+      <CookieConsent />
     </div>
   )
 }

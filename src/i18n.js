@@ -189,6 +189,11 @@ const resources = {
         company: "Компания",
         contacts: "Контакти",
         copyright: "Всички права запазени."
+      },
+      cookies: {
+        message: "Използваме бисквитки за подобряване на вашето изживяване и анализ на трафика.",
+        accept: "Приемам",
+        decline: "Откажи"
       }
     }
   },
@@ -379,6 +384,11 @@ const resources = {
         company: "Company",
         contacts: "Contacts",
         copyright: "All rights reserved."
+      },
+      cookies: {
+        message: "We use cookies to improve your experience and analyze traffic.",
+        accept: "Accept",
+        decline: "Decline"
       }
     }
   }
