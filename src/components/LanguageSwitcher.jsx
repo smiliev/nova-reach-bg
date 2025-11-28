@@ -34,7 +34,7 @@ const LanguageSwitcher = () => {
         whileTap={{ scale: 0.95 }}
         title="English"
       >
-        🇬🇧
+      EN
       </motion.button>
     </div>
   )
