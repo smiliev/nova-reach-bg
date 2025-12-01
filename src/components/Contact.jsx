@@ -121,73 +121,138 @@ const Contact = () => {
             initial={{ opacity: 0, x: -50 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8 }}
+            className="flex"
           >
-            <h3 className="text-3xl font-bold mb-8 text-white">{t('contact.howToFind')}</h3>
-            
-            <div className="space-y-6 mb-8">
-              {contactInfo.map((item, index) => (
+            {/* Promotional Offer */}
+            <div className="bg-gradient-primary p-1 rounded-2xl w-full flex flex-col">
+              <div className="bg-dark-800 rounded-2xl p-8 flex-1 flex flex-col justify-between">
                 <motion.div
-                  key={index}
-                  initial={{ opacity: 0, x: -30 }}
-                  animate={isInView ? { opacity: 1, x: 0 } : {}}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="flex items-start space-x-4"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ duration: 0.6, delay: 0.2 }}
                 >
-                  <div className="flex-shrink-0 w-12 h-12 bg-gradient-primary rounded-lg flex items-center justify-center">
-                    {item.icon}
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-white mb-1">{item.title}</h4>
-                    {item.link ? (
-                      <a href={item.link} className="text-gray-400 hover:text-primary-cyan transition-colors">
-                        {item.info}
-                      </a>
-                    ) : (
-                      <p className="text-gray-400">{item.info}</p>
-                    )}
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-
-            {/* Social Links */}
-            <div className="mt-8">
-              <h4 className="font-semibold text-white mb-4">{t('contact.followUs')}</h4>
-              <div className="flex space-x-4">
-                {socialLinks.map((social, index) => (
-                  <motion.a
-                    key={index}
-                    href={social.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-12 h-12 bg-dark-700 rounded-lg flex items-center justify-center text-gray-400 hover:bg-gradient-primary hover:text-white transition-all"
-                    whileHover={{ scale: 1.1, rotate: 5 }}
-                    whileTap={{ scale: 0.9 }}
-                  >
-                    {social.icon}
-                  </motion.a>
-                ))}
-              </div>
-            </div>
-
-            {/* Decorative element */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={isInView ? { opacity: 1, scale: 1 } : {}}
-              transition={{ duration: 1, delay: 0.5 }}
-              className="hidden lg:block mt-12"
-            >
-              <div className="bg-gradient-primary p-1 rounded-2xl">
-                <div className="bg-dark-800 rounded-2xl p-8">
-                  <h4 className="text-2xl font-bold text-white mb-4">
-                    {t('contact.readyTitle')} <span className="text-gradient">{t('contact.readyHighlight')}</span>?
-                  </h4>
-                  <p className="text-gray-400">
-                    {t('contact.readyDesc')}
+                  <h3 className="text-3xl font-bold mb-6 text-white flex items-start gap-2">
+                    <span className="text-4xl">🎁</span>
+                    <span>{t('contact.promo.title')}</span>
+                  </h3>
+                  
+                  <p className="text-gray-300 mb-8 leading-relaxed">
+                    {t('contact.promo.intro')}
                   </p>
-                </div>
+
+                  <div className="space-y-4 mb-8">
+                    <motion.div 
+                      className="flex items-start gap-3 group"
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={isInView ? { opacity: 1, x: 0 } : {}}
+                      transition={{ duration: 0.5, delay: 0.3 }}
+                    >
+                      <span className="text-2xl mt-1">🎬</span>
+                      <div className="flex-1">
+                        <p className="text-gray-200">{t('contact.promo.service1')}</p>
+                      </div>
+                      <div className="text-right flex items-center gap-3">
+                        <span className="line-through decoration-2 text-red-500 font-bold text-lg">
+                          {t('contact.promo.service1Price')}
+                        </span>
+                        <span className="bg-gradient-to-r from-green-500 via-emerald-400 to-green-500 bg-clip-text text-transparent font-bold text-xl">
+                          {t('contact.promo.freePrice')}
+                        </span>
+                      </div>
+                    </motion.div>
+
+                    <motion.div 
+                      className="flex items-start gap-3 group"
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={isInView ? { opacity: 1, x: 0 } : {}}
+                      transition={{ duration: 0.5, delay: 0.4 }}
+                    >
+                      <span className="text-2xl mt-1">📘</span>
+                      <div className="flex-1">
+                        <p className="text-gray-200">{t('contact.promo.service2')}</p>
+                      </div>
+                      <div className="text-right flex items-center gap-3">
+                        <span className="line-through decoration-2 text-red-500 font-bold text-lg">
+                          {t('contact.promo.service2Price')}
+                        </span>
+                        <span className="bg-gradient-to-r from-green-500 via-emerald-400 to-green-500 bg-clip-text text-transparent font-bold text-xl">
+                          {t('contact.promo.freePrice')}
+                        </span>
+                      </div>
+                    </motion.div>
+
+                    <motion.div 
+                      className="flex items-start gap-3 group"
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={isInView ? { opacity: 1, x: 0 } : {}}
+                      transition={{ duration: 0.5, delay: 0.5 }}
+                    >
+                      <span className="text-2xl mt-1">🎨</span>
+                      <div className="flex-1">
+                        <p className="text-gray-200">{t('contact.promo.service3')}</p>
+                      </div>
+                      <div className="text-right flex items-center gap-3">
+                        <span className="line-through decoration-2 text-red-500 font-bold text-lg">
+                          {t('contact.promo.service3Price')}
+                        </span>
+                        <span className="bg-gradient-to-r from-green-500 via-emerald-400 to-green-500 bg-clip-text text-transparent font-bold text-xl">
+                          {t('contact.promo.freePrice')}
+                        </span>
+                      </div>
+                    </motion.div>
+
+                    <motion.div 
+                      className="flex items-start gap-3 group"
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={isInView ? { opacity: 1, x: 0 } : {}}
+                      transition={{ duration: 0.5, delay: 0.6 }}
+                    >
+                      <span className="text-2xl mt-1">💬</span>
+                      <div className="flex-1">
+                        <p className="text-gray-200">{t('contact.promo.service4')}</p>
+                      </div>
+                      <div className="text-right flex items-center gap-3">
+                        <span className="line-through decoration-2 text-red-500 font-bold text-lg">
+                          {t('contact.promo.service4Price')}
+                        </span>
+                        <span className="bg-gradient-to-r from-green-500 via-emerald-400 to-green-500 bg-clip-text text-transparent font-bold text-xl">
+                          {t('contact.promo.freePrice')}
+                        </span>
+                      </div>
+                    </motion.div>
+                  </div>
+
+                  <motion.div 
+                    className="border-t border-gray-600 pt-6 mt-6 space-y-4"
+                    initial={{ opacity: 0 }}
+                    animate={isInView ? { opacity: 1 } : {}}
+                    transition={{ duration: 0.6, delay: 0.7 }}
+                  >
+                    <div className="flex justify-between items-center">
+                      <span className="text-gray-300 text-xl font-semibold">{t('contact.promo.totalValue')}</span>
+                      <span className="line-through decoration-2 text-red-500 font-bold text-2xl">
+                        {t('contact.promo.totalPrice')}
+                      </span>
+                    </div>
+                    
+                    <motion.div 
+                      className="bg-gradient-to-r from-green-900/30 to-emerald-900/30 border border-green-600/50 rounded-xl p-6"
+                      initial={{ scale: 0.95 }}
+                      animate={isInView ? { scale: 1 } : {}}
+                      transition={{ duration: 0.6, delay: 0.8, type: "spring" }}
+                      whileHover={{ scale: 1.02 }}
+                    >
+                      <div className="text-center">
+                        <p className="text-gray-300 text-lg mb-3">{t('contact.promo.newPartnerPrice')}</p>
+                        <p className="bg-gradient-to-r from-green-500 via-emerald-400 to-green-500 bg-clip-text text-transparent font-bold text-5xl mb-3">
+                          {t('contact.promo.freePrice')}
+                        </p>
+                      </div>
+                    </motion.div>
+                  </motion.div>
+                </motion.div>
               </div>
-            </motion.div>
+            </div>
           </motion.div>
 
           {/* Contact Form */}
@@ -195,12 +260,13 @@ const Contact = () => {
             initial={{ opacity: 0, x: 50 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8 }}
+            className="flex"
           >
             {submitStatus === 'success' ? (
               <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="bg-dark-800 border border-primary-cyan rounded-2xl p-8 text-center"
+                className="bg-dark-800 border border-primary-cyan rounded-2xl p-8 text-center w-full flex flex-col justify-center"
               >
                 <motion.div
                   initial={{ scale: 0 }}
@@ -231,7 +297,7 @@ const Contact = () => {
               <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="bg-dark-800 border border-red-500 rounded-2xl p-8 text-center"
+                className="bg-dark-800 border border-red-500 rounded-2xl p-8 text-center w-full flex flex-col justify-center"
               >
                 <motion.div
                   initial={{ scale: 0 }}
@@ -259,7 +325,7 @@ const Contact = () => {
                 </motion.button>
               </motion.div>
             ) : (
-              <form onSubmit={handleSubmit} className="bg-dark-800 border border-dark-600 rounded-2xl p-8">
+              <form onSubmit={handleSubmit} className="bg-dark-800 border border-dark-600 rounded-2xl p-8 w-full flex flex-col">
               <div className="mb-6">
                 <label htmlFor="name" className="block text-gray-300 font-semibold mb-2">
                   {t('contact.form.name')} {t('contact.form.required')}
@@ -330,7 +396,7 @@ const Contact = () => {
                 </select>
               </div>
 
-              <div className="mb-6">
+              <div className="mb-6 flex-grow flex flex-col">
                 <label htmlFor="message" className="block text-gray-300 font-semibold mb-2">
                   {t('contact.form.message')} {t('contact.form.required')}
                 </label>
@@ -341,7 +407,7 @@ const Contact = () => {
                   onChange={handleChange}
                   required
                   rows="5"
-                  className="w-full px-4 py-3 bg-dark-700 border border-dark-600 rounded-lg text-white focus:outline-none focus:border-primary-cyan transition-colors resize-none"
+                  className="w-full px-4 py-3 bg-dark-700 border border-dark-600 rounded-lg text-white focus:outline-none focus:border-primary-cyan transition-colors resize-none flex-grow"
                   placeholder={t('contact.form.messagePlaceholder')}
                 ></textarea>
               </div>
