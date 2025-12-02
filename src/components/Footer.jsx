@@ -28,7 +28,7 @@ const Footer = () => {
       title: t('footer.contacts'),
       links: [
         { name: 'novareach2025@gmail.com', href: 'mailto:novareach2025@gmail.com' },
-        { name: '+359 895 613 162', href: 'tel:+359895613162' },
+        { name: '+359 895 566 930', href: 'tel:+359895613162' },
         { name: t('contact.location'), href: null }
       ]
     }
