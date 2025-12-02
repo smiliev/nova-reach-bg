@@ -40,7 +40,7 @@ const resources = {
         description: "Изграждаме цялостни маркетинг системи – от стратегия и съдържание до реклама, оптимизация и реални резултати.",
         cta: "Свържи се за безплатна консултация",
         branding: {
-          title: "Branding",
+          title: "Графичен дизайн и брандиране",
           desc: "Изграждаме отличителна идентичност, която повишава разпознаваемостта и доверието във вашия бизнес.",
           feature1: "Лого дизайн",
           feature2: "Brand Identity",
@@ -48,7 +48,7 @@ const resources = {
           feature4: "Визуални материали"
         },
         web: {
-          title: "Web Development",
+          title: "Уеб разработка",
           desc: "Създаваме модерни, бързи и оптимизирани сайтове, които превръщат посетителите в клиенти.",
           feature1: "Уеб дизайн",
           feature2: "WordPress сайтове",
@@ -64,7 +64,7 @@ const resources = {
           feature4: "Копирайтинг"
         },
         social: {
-          title: "Social Media Marketing",
+          title: "Маркетинг в социалните мрежи",
           desc: "Управляваме социалните ви мрежи с фокус върху растеж, ангажираност и продажби.",
           feature1: "Facebook реклама",
           feature2: "Instagram реклама",
@@ -72,7 +72,7 @@ const resources = {
           feature4: "Community management"
         },
         performance: {
-          title: "Performance Marketing",
+          title: "Реклами, ориентирани към резултати",
           desc: "Рекламни кампании, оптимизирани за резултати – повече клиенти, по-ниска цена на придобиване.",
           feature1: "Google Ads",
           feature2: "YouTube реклама",
@@ -80,7 +80,7 @@ const resources = {
           feature4: "Аналитика"
         },
         email: {
-          title: "Email Marketing",
+          title: "Имейл маркетинг",
           desc: "Автоматизирани имейл системи, които повишават допълнителните продажби и задържат клиентите.",
           feature1: "Имейл кампании",
           feature2: "Автоматизация",
@@ -88,7 +88,7 @@ const resources = {
           feature4: "A/B тестване"
         },
         creative: {
-          title: "Creative Production",
+          title: "Видеопродукция",
           desc: "Висококачествено визуално съдържание, което привлича вниманието и увеличава конверсиите.",
           feature1: "Видео продукция",
           feature2: "Фотография",
@@ -96,7 +96,7 @@ const resources = {
           feature4: "Анимации"
         },
         digital: {
-          title: "Digital Innovations",
+          title: "Дигитални иновации",
           desc: "Интерактивни дигитални решения, които подобряват преживяването и стойността за вашите клиенти.",
           feature1: "Мобилни приложения",
           feature2: "AR/VR опит",
