@@ -4,6 +4,8 @@ import Hero from './components/Hero'
 import Services from './components/Services'
 import About from './components/About'
 import Portfolio from './components/Portfolio'
+import Videos from './components/Videos'
+import Reviews from './components/Reviews'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 import CookieConsent from './components/CookieConsent'
@@ -27,6 +29,8 @@ function App() {
       <About />
       <Services />
       {/* <Portfolio /> */}
+      <Videos />
+      <Reviews />
       <Contact />
       <Footer />
       <CookieConsent />

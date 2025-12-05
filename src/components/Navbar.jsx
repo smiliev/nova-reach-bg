@@ -13,6 +13,8 @@ const Navbar = ({ scrolled }) => {
     { name: t('nav.about'), href: '#about' },
     { name: t('nav.services'), href: '#services' },
     // { name: t('nav.portfolio'), href: '#portfolio' },
+    { name: t('nav.videos'), href: '#videos' },
+    { name: t('nav.reviews'), href: '#reviews' },
     { name: t('nav.contact'), href: '#contact' },
   ]
 

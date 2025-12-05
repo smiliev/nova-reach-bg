@@ -9,6 +9,8 @@ const resources = {
         about: "За нас",
         services: "Услуги",
         portfolio: "Портфолио",
+        videos: "Видеа",
+        reviews: "Отзиви",
         contact: "Контакти",
         contactUs: "Свържи се с нас"
       },
@@ -103,6 +105,18 @@ const resources = {
           feature3: "Чатботове",
           feature4: "AI решения"
         }
+      },
+      videos: {
+        title: "Нашите",
+        titleHighlight: "видеа",
+        description: "Разгледайте нашите видео проекти и вижте как създаваме качествено видео съдържание",
+        moreInfo: "Искате да видите повече видеа? Свържете се с нас за пълното ни портфолио.",
+      },
+      reviews: {
+        title: "Какво казват",
+        titleHighlight: "нашите клиенти",
+        description: "Прочетете отзивите на компаниите, с които работим и как им помогнахме да постигнат целите си",
+        moreInfo: "Искате да станете част от успешните ни клиенти? Свържете се с нас днес!"
       },
       portfolio: {
         title: "Нашето",
@@ -220,6 +234,8 @@ const resources = {
         about: "About",
         services: "Services",
         portfolio: "Portfolio",
+        videos: "Videos",
+        reviews: "Reviews",
         contact: "Contact",
         contactUs: "Contact Us"
       },
@@ -314,6 +330,18 @@ const resources = {
           feature3: "Chatbots",
           feature4: "AI Solutions"
         }
+      },
+      videos: {
+        title: "Our",
+        titleHighlight: "Videos",
+        description: "Browse our video projects and see how we create quality video content",
+        moreInfo: "Want to see more videos? Contact us for our complete portfolio.",
+      },
+      reviews: {
+        title: "What our",
+        titleHighlight: "clients say",
+        description: "Read testimonials from companies we work with and how we helped them achieve their goals",
+        moreInfo: "Want to become one of our successful clients? Contact us today!"
       },
       portfolio: {
         title: "Our",
