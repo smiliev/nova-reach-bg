@@ -172,7 +172,7 @@ const resources = {
           service1Price: "150 лв",
           service2: "бизнес план, базиран на вашата ниша",
           service2Price: "400 лв",
-          service3: "дизайн за визитки или основно лого",
+          service3: "дизайн за корица или основно лого",
           service3Price: "70 лв",
           service4: "консултация за посоката на развитие",
           service4Price: "320 лв",
