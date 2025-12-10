@@ -24,7 +24,7 @@ export const reviews = [
       en: 'Marketing Manager, Fashion House'
     },
     review: {
-      bg: 'Страхотен екип! Създадоха ни уникална визуална идентичност и всички наши клиенти я харесват. Препоръчвам топло!',
+      bg: 'Работата с Nova Reach беше впечатляваща. Екипът разработи уникална и модерна визуална идентичност, която моментално повиши ангажираността към нашите продукти. Професионализъм на най-високо ниво.',
       en: 'Amazing team! They created a unique visual identity for us and all our clients love it. Highly recommend!'
     },
     rating: 5,
@@ -38,7 +38,7 @@ export const reviews = [
       en: 'Owner, Restaurant Chain'
     },
     review: {
-      bg: 'Благодарение на тяхната социална медия кампания, имаме 3 пъти повече резервации. ROI-ът е невероятен!',
+      bg: 'Работата с Nova Reach доведе до над три пъти повече резервации за нашите ресторанти. Стратегията им беше точна, ясна и най-важното – работеща. Още в първите седмици видяхме ръст в интереса от клиенти. Екипът работи професионално и винаги предлага решения, които водят до реални резултати. ',
       en: 'Thanks to their social media campaign, we have 3 times more reservations. The ROI is incredible!'
     },
     rating: 5,
