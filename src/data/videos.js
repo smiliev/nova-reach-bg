@@ -4,13 +4,13 @@
 export const videos = [
   {
     id: 1,
-    youtubeId: '', // Replace with your actual YouTube video ID
+   youtubeId: 'pUF8pi4SK8k',
     title: {
-      bg: 'Промо видео - Ресторант',
+      bg: 'Промо видео - Kaestetics',
       en: 'Promo Video - Restaurant'
     },
     description: {
-      bg: 'Промоционално видео за ресторантска верига',
+      bg: 'Промоционално видео за клиника "Kaesthetics"',
       en: 'Promotional video for restaurant chain'
     }
   },
