@@ -6,24 +6,24 @@ export const videos = [
     id: 1,
    youtubeId: 'pUF8pi4SK8k',
     title: {
-      bg: 'Промо видео - K Aestetics Clinic',
+      bg: 'Промо видео - K Aesthetics Clinic',
       en: 'Promo Video - Restaurant'
     },
     description: {
-      bg: 'Промоционално видео за клиника "K Aestetics"',
-      en: 'Promotional video for restaurant chain'
+      bg: 'Промоционално видео за клиника "K Aesthetics"',
+      en: 'Promotional video for "K Aesthetics'
     }
   },
   {
     id: 2,
-    youtubeId: '', // Replace with your actual YouTube video ID
+    youtubeId: 'uGUBbD9df6g',
     title: {
-      bg: 'Социални медии кампания',
-      en: 'Social Media Campaign'
+      bg: 'Amaya Dental Clinic',
+      en: 'Amaya Dental Clinic'
     },
     description: {
-      bg: 'Видео съдържание за Instagram и Facebook',
-      en: 'Video content for Instagram and Facebook'
+      bg: 'Видео съдържание за "Amaya Dental Clinic"',
+      en: 'Video content for "Amaya Dental Clinic"'
     }
   }
 ]
