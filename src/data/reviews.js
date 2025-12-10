@@ -10,7 +10,7 @@ export const reviews = [
       en: 'CEO, Tech Solutions Ltd'
     },
     review: {
-      bg: 'Работата с Nova Reach беше изключително професионална. Те успяха да увеличат нашата онлайн видимост с 250% за 3 месеца!',
+      bg: 'Работата с Nova Reach беше на изключително високо ниво. Екипът подходи стратегически, оптимизира нашата дигитална среда и увеличи онлайн видимостта ни с над 200% само за месец!',
       en: 'Working with Nova Reach was extremely professional. They managed to increase our online visibility by 250% in 3 months!'
     },
     rating: 5,
