@@ -6,11 +6,11 @@ export const videos = [
     id: 1,
    youtubeId: 'pUF8pi4SK8k',
     title: {
-      bg: 'Промо видео - Kaestetics',
+      bg: 'Промо видео - K Aestetics Clinic',
       en: 'Promo Video - Restaurant'
     },
     description: {
-      bg: 'Промоционално видео за клиника "Kaesthetics"',
+      bg: 'Промоционално видео за клиника "K Aestetics"',
       en: 'Promotional video for restaurant chain'
     }
   },
