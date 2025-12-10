@@ -12,12 +12,12 @@ const resources = {
         videos: "Видеа",
         reviews: "Отзиви",
         contact: "Контакти",
-        contactUs: "Свържи се с нас"
+        contactUs: "Експресна консултация"
       },
       hero: {
         tagline: "Expand. Evolve. Explode.",
         subtitle: "Ръст. Конверсии. Видимост. Оптимизация. Всичко, което движи бизнеса напред.",
-        requestQuote: "Заяви безплатна консултация",
+        requestQuote: "Вземи Бонус Пакет",
         ourServices: "Виж нашите услуги"
       },
       about: {
