@@ -3,7 +3,8 @@ import { FaArrowDown } from 'react-icons/fa'
 import { useTranslation } from 'react-i18next'
 
 const Hero = () => {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
+  const isBulgarian = i18n.language === 'bg'
   
   const scrollToAbout = () => {
     document.querySelector('#about').scrollIntoView({ behavior: 'smooth' })
@@ -78,7 +79,11 @@ const Hero = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="text-4xl sm:text-5xl md:text-7xl font-bold mb-6"
+          className={`font-bold mb-6 max-w-5xl mx-auto ${
+            isBulgarian 
+              ? 'text-2xl sm:text-3xl md:text-4xl lg:text-5xl' 
+              : 'text-4xl sm:text-5xl md:text-7xl'
+          }`}
         >
           <span className="text-gradient">{t('hero.tagline')}</span>
         </motion.h1>
@@ -87,7 +92,11 @@ const Hero = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="text-xl sm:text-2xl md:text-3xl text-gray-300 mb-12 max-w-3xl mx-auto"
+          className={`text-gray-300 mb-12 max-w-3xl mx-auto ${
+            isBulgarian 
+              ? 'text-lg sm:text-xl md:text-2xl' 
+              : 'text-xl sm:text-2xl md:text-3xl'
+          }`}
         >
           {t('hero.subtitle')}
         </motion.p>
@@ -96,7 +105,7 @@ const Hero = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.8 }}
-          className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+          className="flex justify-center"
         >
           <motion.a
             href="#contact"
@@ -109,18 +118,6 @@ const Hero = () => {
             whileTap={{ scale: 0.95 }}
           >
             {t('hero.requestQuote')}
-          </motion.a>
-          <motion.a
-            href="#services"
-            onClick={(e) => {
-              e.preventDefault()
-              document.querySelector('#services').scrollIntoView({ behavior: 'smooth' })
-            }}
-            className="px-8 py-4 border-2 border-gray-600 rounded-full text-white font-semibold text-lg hover:border-primary-cyan transition-colors"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            {t('hero.ourServices')}
           </motion.a>
         </motion.div>
       </div>

@@ -11,24 +11,28 @@ const About = () => {
 
   const features = [
     {
-      icon: <FaRocket className="text-4xl" />,
+      icon: <FaRocket />,
       title: t('about.feature1Title'),
-      description: t('about.feature1Desc')
+      description: t('about.feature1Desc'),
+      color: 'bg-gradient-to-br from-pink-500 to-rose-600'
     },
     {
-      icon: <FaChartLine className="text-4xl" />,
+      icon: <FaChartLine />,
       title: t('about.feature2Title'),
-      description: t('about.feature2Desc')
+      description: t('about.feature2Desc'),
+      color: 'bg-gradient-to-br from-cyan-500 to-blue-600'
     },
     {
-      icon: <FaLightbulb className="text-4xl" />,
+      icon: <FaLightbulb />,
       title: t('about.feature3Title'),
-      description: t('about.feature3Desc')
+      description: t('about.feature3Desc'),
+      color: 'bg-gradient-to-br from-amber-500 to-orange-600'
     },
     {
-      icon: <FaUsers className="text-4xl" />,
+      icon: <FaUsers />,
       title: t('about.feature4Title'),
-      description: t('about.feature4Desc')
+      description: t('about.feature4Desc'),
+      color: 'bg-gradient-to-br from-violet-500 to-purple-600'
     }
   ]
 
@@ -45,7 +49,7 @@ const About = () => {
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          className="text-center mb-12"
         >
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6">
             {t('about.title')} <span className="text-gradient">{t('about.titleHighlight')}</span>
@@ -55,44 +59,47 @@ const About = () => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+        {/* Features - Compact horizontal layout */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-12 max-w-4xl mx-auto">
           {features.map((feature, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 50 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              whileHover={{ y: -10, transition: { duration: 0.2 } }}
-              className="bg-dark-700 p-6 rounded-2xl border border-dark-600 hover:border-primary-cyan transition-all"
+              transition={{ duration: 0.4, delay: index * 0.1 }}
+              className="flex items-start gap-4 p-4 rounded-xl bg-dark-700/50 border border-dark-600 hover:border-dark-500 transition-all group"
             >
-              <div className="text-gradient mb-4">
+              <div className={`${feature.color} w-11 h-11 rounded-lg flex items-center justify-center text-white text-lg shrink-0 group-hover:scale-110 transition-transform`}>
                 {feature.icon}
               </div>
-              <h3 className="text-xl font-bold mb-3 text-white">{feature.title}</h3>
-              <p className="text-gray-400">{feature.description}</p>
+              <div className="min-w-0">
+                <h3 className="font-semibold text-white mb-1">{feature.title}</h3>
+                <p className="text-gray-400 text-sm leading-relaxed">{feature.description}</p>
+              </div>
             </motion.div>
           ))}
         </div>
 
+        {/* Stats */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="bg-gradient-primary p-1 rounded-3xl"
+          className="bg-gradient-primary p-[1px] rounded-2xl max-w-3xl mx-auto"
         >
-          <div className="bg-dark-700 rounded-3xl p-8 md:p-12">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-              <div>
-                <h3 className="text-5xl font-bold text-gradient mb-2">80+</h3>
-                <p className="text-gray-300">{t('about.stat1')}</p>
+          <div className="bg-dark-700 rounded-2xl py-8 px-6">
+            <div className="grid grid-cols-3 divide-x divide-dark-600">
+              <div className="text-center px-4">
+                <h3 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gradient mb-1">80+</h3>
+                <p className="text-gray-400 text-sm sm:text-base">{t('about.stat1')}</p>
               </div>
-              <div>
-                <h3 className="text-5xl font-bold text-gradient mb-2">40+</h3>
-                <p className="text-gray-300">{t('about.stat2')}</p>
+              <div className="text-center px-4">
+                <h3 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gradient mb-1">40+</h3>
+                <p className="text-gray-400 text-sm sm:text-base">{t('about.stat2')}</p>
               </div>
-              <div>
-                <h3 className="text-5xl font-bold text-gradient mb-2">3+</h3>
-                <p className="text-gray-300">{t('about.stat3')}</p>
+              <div className="text-center px-4">
+                <h3 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gradient mb-1">3+</h3>
+                <p className="text-gray-400 text-sm sm:text-base">{t('about.stat3')}</p>
               </div>
             </div>
           </div>
@@ -103,4 +110,3 @@ const About = () => {
 }
 
 export default About
-

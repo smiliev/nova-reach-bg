@@ -26,12 +26,12 @@ function App() {
     <div className="relative">
       <Navbar scrolled={scrolled} />
       <Hero />
-      <About />
       <Services />
       {/* <Portfolio /> */}
       <Videos />
       <Reviews />
       <Contact />
+      <About />
       <Footer />
       <CookieConsent />
     </div>
